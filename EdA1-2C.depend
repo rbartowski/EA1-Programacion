@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1602184890 source:c:\unlam\progra\ea-1\eda1-2c-proyentregable\eda1-2c-proyentregable\eda1-2c_64bit\funciones.c
+	"funciones.h"
+
+1602026522 c:\unlam\progra\ea-1\eda1-2c-proyentregable\eda1-2c-proyentregable\eda1-2c_64bit\funciones.h
+	<stdio.h>
+
+1602184252 source:c:\unlam\progra\ea-1\eda1-2c-proyentregable\eda1-2c-proyentregable\eda1-2c_64bit\main.c
+	"main.h"
+
+1602026522 c:\unlam\progra\ea-1\eda1-2c-proyentregable\eda1-2c-proyentregable\eda1-2c_64bit\main.h
+	<stdio.h>
+	"funciones.h"
+	<stdlib.h>
+
