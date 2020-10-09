@@ -13,12 +13,12 @@ int main()
     if(fpPantalla == NULL)
         fpPantalla = stdout;
 
-    punto_1(fpPantalla);
+    //punto_1(fpPantalla);
 
-    //punto_2(fpPantalla);
+    punto_2(fpPantalla);
 
     fclose(fpPantalla);
-    system("start Notepad " ARCH_PUNTO_1);
+    //system("start Notepad " ARCH_PUNTO_1);
     system("start Notepad pantalla.txt");
     return 0;
 }
@@ -32,7 +32,7 @@ int main()
 void punto_1(FILE *fpPantalla)
 {
     FILE   *fpEnt;
-    int     nroLote = 1;   /// pruebe con 0/1/2/3/4/5/6/7/8/9/10 y además con
+    int     nroLote = 10;   /// pruebe con 0/1/2/3/4/5/6/7/8/9/10 y además con
                             ///     cualquier otro valor para tener distintos
                             ///     lotes de prueba
 
@@ -79,7 +79,7 @@ void punto_2(FILE *fpPantalla)
             cant);
 
 /** acá debe invocar a su versión de la función  >> trasponerCentro_MIO <<   **/
-    cant = traspRespAlCentro(matriz, N_FILAS, M_COLUM);
+    cant = traspRespAlCentro_MIO(matriz, N_FILAS, M_COLUM);
 
     fprintf(fpPantalla,
             "Se hicieron %d intercambios de los elementos de la matriz.\n"
@@ -92,7 +92,7 @@ void punto_2(FILE *fpPantalla)
             cant);
 
 /** acá debe invocar a su versión de la función  >> mostrarTriangSup_MIO <<  **/
-    cant = mostrarTriangSup(matriz, N_FILAS, M_COLUM, fpPantalla);
+    cant = mostrarTriangSup_MIO(matriz, N_FILAS, M_COLUM, fpPantalla);
 
     fprintf(fpPantalla,
             "Se mostraron los %d elementos de la triangular superior.\n",

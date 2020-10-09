@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1602252306 source:c:\unlam\progra\ea-1\eda1-2c-proyentregable\eda1-2c-proyentregable\eda1-2c_64bit\funciones.c
+1602266054 source:c:\unlam\progra\ea-1\eda1-2c-proyentregable\eda1-2c-proyentregable\eda1-2c_64bit\funciones.c
 	"funciones.h"
 
-1602026522 c:\unlam\progra\ea-1\eda1-2c-proyentregable\eda1-2c-proyentregable\eda1-2c_64bit\funciones.h
+1602266902 c:\unlam\progra\ea-1\eda1-2c-proyentregable\eda1-2c-proyentregable\eda1-2c_64bit\funciones.h
 	<stdio.h>
 
-1602252470 source:c:\unlam\progra\ea-1\eda1-2c-proyentregable\eda1-2c-proyentregable\eda1-2c_64bit\main.c
+1602264073 source:c:\unlam\progra\ea-1\eda1-2c-proyentregable\eda1-2c-proyentregable\eda1-2c_64bit\main.c
 	"main.h"
 
 1602026522 c:\unlam\progra\ea-1\eda1-2c-proyentregable\eda1-2c-proyentregable\eda1-2c_64bit\main.h

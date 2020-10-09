@@ -12,6 +12,10 @@
 /**//**//* ACÁ DEBE DESARROLLAR LAS FUNCIONES Y PRIMITIVAS PEDIDAS    *//**//**/
 /**//**//* ADEMÁS DE CUALQUIER OTRA FUNCIÓN QUE SE REQUIERA           *//**//**/
 
+/******************************************
+****************  PUNTO 1 *****************
+******************************************/
+
 #define TAM_LINEA 199
 
 int esCaracterEspecial(char c)
@@ -151,9 +155,10 @@ void imprimirResultados(FILE * fp,
 
 void procesarArchivo_MIO(FILE *fpEnt, FILE *fpPantalla)
 {
-    char linea[TAM_LINEA] = "",
-         palabrasMayores[CANT_PAL_MAX][TAM_PAL_MAX];
-    char * pAMayores;
+    char palabrasMayores[CANT_PAL_MAX][TAM_PAL_MAX],
+         linea[TAM_LINEA] = "";
+    char * pAMayores,
+         * origenLinea;
     int cantPalabrasMayores = 0,
         cantLineas = 0,
         cantLineasVacias = 0,
@@ -166,7 +171,7 @@ void procesarArchivo_MIO(FILE *fpEnt, FILE *fpPantalla)
     }
 
     while(fgets(linea, sizeof(linea), fpEnt)) {
-        char * origenLinea = linea;
+        origenLinea = linea;
         cantLineas++;
 
         if (esLineaVacia(linea)) {
@@ -235,6 +240,57 @@ void procesarArchivo_MIO(FILE *fpEnt, FILE *fpPantalla)
 
 }
 
+/******************************************
+****************  PUNTO 2 *****************
+******************************************/
+
+int traspRespAlCentro_MIO(int mat[][M_COLUM], int filas, int colum)
+{
+    int aux,
+        modificaciones = 0;
+    int * origen = mat[0],
+        * fin = &mat[filas - 1][colum - 1];
+
+    while(origen < fin) {
+        modificaciones++;
+        aux = *fin;
+        *fin = *origen;
+        *origen = aux;
+        origen++;
+        fin--;
+    }
+
+    return modificaciones;
+}
+
+int mostrarTriangSup_MIO(int mat[][M_COLUM], int filas, int colum,
+                         FILE *fpPantalla)
+{
+    int cantDigitos = 4,
+        cantElementos = 0;
+
+    for(int i = 0; i < filas; i++)
+    {
+        for (int j = 0; j < colum; j++)
+        {
+            if (i <= j)
+            {
+                cantElementos++;
+                if (i == j)
+                    fprintf(fpPantalla, "%*d",
+                            j * cantDigitos + cantDigitos,
+                            mat[i][j]);
+                else
+                    fprintf(fpPantalla, "%*d", cantDigitos, mat[i][j]);
+
+                if (j == colum - 1)
+                    fprintf(fpPantalla, "\n");
+            }
+        }
+    }
+
+    return cantElementos;
+}
 
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 /**//* FUNCIONES A DESARROLLAR                                            *//**/
