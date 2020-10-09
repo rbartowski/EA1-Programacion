@@ -32,7 +32,7 @@ int main()
 void punto_1(FILE *fpPantalla)
 {
     FILE   *fpEnt;
-    int     nroLote = 4;   /// pruebe con 0/1/2/3/4/5/6/7/8/9/10 y además con
+    int     nroLote = 1;   /// pruebe con 0/1/2/3/4/5/6/7/8/9/10 y además con
                             ///     cualquier otro valor para tener distintos
                             ///     lotes de prueba
 

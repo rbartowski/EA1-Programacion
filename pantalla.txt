@@ -1,6 +1,12 @@
 ********************************************
-* PUNTO-1: Probando con lote de prueba  4. *
+* PUNTO-1: Probando con lote de prueba  1. *
 ********************************************
+El archivo tiene un total de 1 línea(s) de texto.
+Hay 1 línea(s) sin palabras.
+Hay un total de 0 palabra(s).
+La palabra más larga tiene 0 caracteres.
+Hay 0 palabra(s) con esa cantidad de caracteres
+Se muestra(n) la(s) 0 palabra(s) más larga(s)
 ********************************************
 *           Fin ejecución PUNTO-1          *
 ********************************************

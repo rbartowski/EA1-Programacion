@@ -107,6 +107,48 @@ int esLineaVacia(const char * s)
     return !esLetraODigito_MIO(*s);
 }
 
+void imprimirResultados(FILE * fp,
+                        const char palabras[CANT_PAL_MAX][TAM_PAL_MAX],
+                        int cantLineasVacias,
+                        int cantLineas,
+                        int cantPalabras,
+                        int cantPalabrasMayores,
+                        int mayorLongitud)
+{
+    int tope = mayorLongitud > TAM_PAL_MAX ? TAM_PAL_MAX : mayorLongitud;
+
+    fprintf(fp, "El archivo tiene un total de %d línea(s) de texto.",
+            cantLineas);
+    fprintf(fp, "\nHay %d línea(s) sin palabras.", cantLineasVacias);
+    fprintf(fp, "\nHay un total de %d palabra(s).", cantPalabras);
+    fprintf(fp, "\nLa palabra más larga tiene %d caracteres.", mayorLongitud);
+    fprintf(fp, "\nHay %d palabra(s) con esa cantidad de caracteres",
+           cantPalabrasMayores);
+
+    if (cantPalabrasMayores)
+        fprintf(fp, "\nSe muestra(n) la(s) %d palabra(s) más larga(s)",
+        cantPalabrasMayores);
+    else
+        fprintf(fp, "\nSe muestra(n) la(s) %d palabra(s) más larga(s)\n",
+        cantPalabrasMayores);
+
+    for(int j = 0; j < cantPalabrasMayores; j++)
+    {
+        if (j < 9)
+            fprintf(fp, "\n %d - ", j + 1);
+        else
+            fprintf(fp, "\n%d - ", j + 1);
+
+        for(int k = 0; k < tope; k++)
+        {
+            if (j == cantPalabrasMayores - 1 && k == tope - 1)
+                fprintf(fp, "%c\n", palabras[j][k]);
+            else
+                fprintf(fp, "%c", palabras[j][k]);
+        }
+    }
+}
+
 void procesarArchivo_MIO(FILE *fpEnt, FILE *fpPantalla)
 {
     char linea[TAM_LINEA] = "",
@@ -118,8 +160,8 @@ void procesarArchivo_MIO(FILE *fpEnt, FILE *fpPantalla)
         cantPalabras = 0,
         mayorLongitud = 0;
 
-    if (!fpEnt || !fpPantalla) {
-        printf("ERROR - El archivo no existe");
+    if (!fpEnt) {
+        fprintf(fpPantalla, "ERROR - El archivo no existe\n");
         return;
     }
 
@@ -153,7 +195,8 @@ void procesarArchivo_MIO(FILE *fpEnt, FILE *fpPantalla)
                         cantPalabrasMayores = 1;
                         pAMayores = copiarPal_MIO(palabrasMayores[0],
                                                   inicioPal,
-                                                  tam, TAM_PAL_MAX);
+                                                  tam,
+                                                  TAM_PAL_MAX);
                     }
                     else if (tam == mayorLongitud &&
                              cantPalabrasMayores < CANT_PAL_MAX)
@@ -173,37 +216,21 @@ void procesarArchivo_MIO(FILE *fpEnt, FILE *fpPantalla)
                 }
             }
         }
-        fflush(stdin);
     }
 
     if (cantLineas)
     {
-        printf("\nEl archivo tiene un total de %d l%cnea(s) de texto.",
-           cantLineas, 161);
-        printf("\nHay %d l%cnea(s) sin palabras.",
-               cantLineasVacias, 161);
-        printf("\nHay un total de %d palabra(s).",
-               cantPalabras);
-        printf("\nLa palabra m%cs larga tiene %d caracteres.",
-               160, mayorLongitud);
-        printf("\nHay %d palabra(s) con esa cantidad de caracteres",
-               cantPalabrasMayores);
-        printf("\nSe muestra(n) la(s) %d palabra(s) m%cs larga(s)",
-               cantPalabrasMayores, 160);
-
-        for(int j = 0; j < cantPalabrasMayores - 1; j++)
-        {
-            printf("\n%d - ", j + 1);
-            for(int k = 0; k < TAM_PAL_MAX; k++)
-            {
-                printf("%c", palabrasMayores[j][k]);
-            }
-
-        }
+        imprimirResultados(fpPantalla,
+                           palabrasMayores,
+                           cantLineasVacias,
+                           cantLineas,
+                           cantPalabras,
+                           cantPalabrasMayores,
+                           mayorLongitud);
     }
     else
     {
-        printf("\nEl archivo est%c vac%co", 160, 161);
+        fprintf(fpPantalla, "El archivo está vacío\n");
     }
 
 }
