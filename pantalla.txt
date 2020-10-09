@@ -1,7 +1,33 @@
 ********************************************
-* PUNTO-2: Probando con matriz de 20 x 15. *
+* PUNTO-1: Probando con lote de prueba 10. *
 ********************************************
-Matriz creada con 300 elementos.
+El archivo tiene un total de 28 línea(s) de texto.
+Hay 10 línea(s) sin palabras.
+Hay un total de 140 palabra(s).
+La palabra más larga tiene 22 caracteres.
+Hay 13 palabra(s) con esa cantidad de caracteres
+Se muestra(n) la(s) 13 palabra(s) más larga(s)
+ 1 - UnexpectedEndOfRunK1
+ 2 - VisualizationJustAbo
+ 3 - CallToMichaelITMonto
+ 4 - ultrarequetedelirant
+ 5 - contrarrevolucionari
+ 6 - nacionalsociodemócra
+ 7 - anticonstitucionalís
+ 8 - dehidroepiandrostero
+ 9 - esternocleidomastoid
+10 - hipergammaglobulinem
+11 - electroencefalografí
+12 - esternocleidomastoid
+13 - otorrinolaringológic
+********************************************
+*           Fin ejecución PUNTO-1          *
+********************************************
+
+********************************************
+* PUNTO-2: Probando con matriz de 15 x 15. *
+********************************************
+Matriz creada con 225 elementos.
  -61  58  45 -50   0 -43 -92 -52   3  66 -17 -58  48 -17 -59
  -98  90 -82 -87  54 -18 -48  64 -63  50  30 -73 -48  74 -59
  -41  93 -55 -19  92  44  30 -19  19 -28 -18  13  65  77  56
@@ -17,21 +43,11 @@ Matriz creada con 300 elementos.
   -1  76 -70   1  36  98  41 -10  62  57  66 -25  29  91 -66
   71   0 -91  99 -84  73 -12  55 -37 -62 -20 -74  42  53  59
   96  93  20 -47  85  24  72  33 -50  68 -91  76 -56 -83  78
- -45  16 -46 -68 -90 -17  55  74 -47  25   9  90 -86  24 -40
- -85  -6 -21  70 -26 -32  86  -1 -59  18 -66  48  -5  -2  35
- -79  81 -69 -88  11 -56  54  79 -43 -73 -33 -11  52 -85 -28
- -81  50 -13 -18  97   7  38 -49 -57 -75   7 -78 -46  15 -31
- -13 -56  17  52  72  25  72 -87 -54  13 -90 -75  37  88 -99
-Se mostraron los 300 elementos de la matriz.
+Se mostraron los 225 elementos de la matriz.
 
 Se procede a trasponerla con respecto al centro.
-Se hicieron 150 intercambios de los elementos de la matriz.
+Se hicieron 112 intercambios de los elementos de la matriz.
 Se procede a mostrarla.
- -99  88  37 -75 -90  13 -54 -87  72  25  72  52  17 -56 -13
- -31  15 -46 -78   7 -75 -57 -49  38   7  97 -18 -13  50 -81
- -28 -85  52 -11 -33 -73 -43  79  54 -56  11 -88 -69  81 -79
-  35  -2  -5  48 -66  18 -59  -1  86 -32 -26  70 -21  -6 -85
- -40  24 -86  90   9  25 -47  74  55 -17 -90 -68 -46  16 -45
   78 -83 -56  76 -91  68 -50  33  72  24  85 -47  20  93  96
   59  53  42 -74 -20 -62 -37  55 -12  73 -84  99 -91   0  71
  -66  91  29 -25  66  57  62 -10  41  98  36   1 -70  76  -1
@@ -47,24 +63,24 @@ Se procede a mostrarla.
   56  77  65  13 -18 -28  19 -19  30  44  92 -19 -55  93 -41
  -59  74 -48 -73  30  50 -63  64 -48 -18  54 -87 -82  90 -98
  -59 -17  48 -58 -17  66   3 -52 -92 -43   0 -50  45  58 -61
-Se mostraron los 300 elementos de la matriz.
+Se mostraron los 225 elementos de la matriz.
 
 Se procede a mostrar la triangular superior.
- -99  88  37 -75 -90  13 -54 -87  72  25  72  52  17 -56 -13
-      15 -46 -78   7 -75 -57 -49  38   7  97 -18 -13  50 -81
-          52 -11 -33 -73 -43  79  54 -56  11 -88 -69  81 -79
-              48 -66  18 -59  -1  86 -32 -26  70 -21  -6 -85
-                   9  25 -47  74  55 -17 -90 -68 -46  16 -45
-                      68 -50  33  72  24  85 -47  20  93  96
-                         -37  55 -12  73 -84  99 -91   0  71
-                             -10  41  98  36   1 -70  76  -1
-                                  18 -99  10  20  27 -34  -5
-                                     -92 -56  89  64 -94 -98
-                                          -9  77 -99 -57  -9
-                                             -40  22  95 -87
-                                                 -54  64 -43
-                                                       1 -63
-                                                         -77
+  78 -83 -56  76 -91  68 -50  33  72  24  85 -47  20  93  96
+      53  42 -74 -20 -62 -37  55 -12  73 -84  99 -91   0  71
+          29 -25  66  57  62 -10  41  98  36   1 -70  76  -1
+             -79  23 -31  43 -88  18 -99  10  20  27 -34  -5
+                 -84 -20  98  52  76 -92 -56  89  64 -94 -98
+                     -39 -56  62  -8  -6  -9  77 -99 -57  -9
+                          45  -4 -36 -80  31 -40  22  95 -87
+                              83  23 -54 -11  97 -54  64 -43
+                                 -72 -68  14 -67   1   1 -63
+                                      57  -5 -83  13  61 -77
+                                          61   8 -36 -92 -74
+                                             -83 -32 -26 -12
+                                                 -55  93 -41
+                                                      90 -98
+                                                         -61
 Se mostraron los 120 elementos de la triangular superior.
 ********************************************
 *           Fin ejecución PUNTO-2          *

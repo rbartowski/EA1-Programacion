@@ -17,6 +17,7 @@
 ******************************************/
 
 #define TAM_LINEA 199
+#define TAM_PAL_MIO(X, Y) ((Y)-(X))
 
 int esCaracterEspecial(char c)
 {
@@ -47,11 +48,14 @@ int esLetraODigito_MIO(char c)
 
 char * proxPal_MIO(const char *s)
 {
-    while(!esLetraODigito_MIO(*s) && *s != '\n') {
+    int esLetraODig = esLetraODigito_MIO(*s);
+
+    while(!esLetraODig && *s != '\n' && *s != '\0') {
         s++;
+        esLetraODig = esLetraODigito_MIO(*s);
     }
 
-    return *s != '\n' ? (char *)s : NULL;
+    return esLetraODig ? (char *)s : NULL;
 }
 
 char * finPal_MIO(const char *s)
@@ -63,26 +67,26 @@ char * finPal_MIO(const char *s)
     return (char*)s;
 }
 
-size_t tamPal_MIO(const char *ini, const char *fin)
-{
-    return fin - ini;
-}
-
 char * copiarPal_MIO(char * dest, const char * orig, size_t tam, int tope)
 {
-    const char * principioPalabra = orig;
-    while(tam > 0 && (orig - principioPalabra) < tope) {
-        *dest = *orig;
+    const char * palabra = orig;
+    int offset = 0;
+
+    while(tam > 0 && offset < tope) {
+        *dest = *palabra;
         dest++;
-        orig++;
+        palabra++;
         tam--;
+        offset = palabra - orig;
     }
-    return dest;
+
+    // devuelve la direccion del próximo elemento de la matriz
+    return dest + (tope - offset);
 }
 
 char * finDeLinea(const char * s)
 {
-    while(*s != '\n') {
+    while(*s != '\n' && *s != '\0') {
         s++;
     }
 
@@ -98,17 +102,6 @@ void limpiarMayores(char m[CANT_PAL_MAX][TAM_PAL_MAX])
             m[i][j] = 0;
         }
     }
-}
-
-int esLineaVacia(const char * s)
-{
-    int i = 0;
-    while(!esLetraODigito_MIO(*s) && *s != '\n' && i < TAM_LINEA) {
-        i++;
-        s++;
-    }
-
-    return !esLetraODigito_MIO(*s);
 }
 
 void imprimirResultados(FILE * fp,
@@ -127,14 +120,14 @@ void imprimirResultados(FILE * fp,
     fprintf(fp, "\nHay un total de %d palabra(s).", cantPalabras);
     fprintf(fp, "\nLa palabra más larga tiene %d caracteres.", mayorLongitud);
     fprintf(fp, "\nHay %d palabra(s) con esa cantidad de caracteres",
-           cantPalabrasMayores);
+            cantPalabrasMayores);
 
     if (cantPalabrasMayores)
         fprintf(fp, "\nSe muestra(n) la(s) %d palabra(s) más larga(s)",
-        cantPalabrasMayores);
+                cantPalabrasMayores);
     else
         fprintf(fp, "\nSe muestra(n) la(s) %d palabra(s) más larga(s)\n",
-        cantPalabrasMayores);
+                cantPalabrasMayores);
 
     for(int j = 0; j < cantPalabrasMayores; j++)
     {
@@ -158,7 +151,8 @@ void procesarArchivo_MIO(FILE *fpEnt, FILE *fpPantalla)
     char palabrasMayores[CANT_PAL_MAX][TAM_PAL_MAX],
          linea[TAM_LINEA] = "";
     char * pAMayores,
-         * origenLinea;
+         * origenLinea,
+         * inicioPal;
     int cantPalabrasMayores = 0,
         cantLineas = 0,
         cantLineasVacias = 0,
@@ -174,52 +168,47 @@ void procesarArchivo_MIO(FILE *fpEnt, FILE *fpPantalla)
         origenLinea = linea;
         cantLineas++;
 
-        if (esLineaVacia(linea)) {
+        inicioPal = proxPal_MIO(origenLinea);
+
+        if (!inicioPal)
+        {
             cantLineasVacias++;
         }
-        else {
-            while(*origenLinea != '\n')
+
+        while(inicioPal)
+        {
+            char * finPalActual;
+            int tam;
+
+            finPalActual = finPal_MIO(inicioPal);
+            tam = TAM_PAL_MIO(inicioPal, finPalActual);
+
+            cantPalabras++;
+
+            if (tam > mayorLongitud)
             {
-                char * inicioPal = proxPal_MIO(origenLinea);
-                char * finPalActual;
-                int tam;
+                if (cantPalabrasMayores > 0)
+                    limpiarMayores(palabrasMayores);
 
-                if (inicioPal)
-                {
-                    finPalActual = finPal_MIO(inicioPal);
-                    tam = tamPal_MIO(inicioPal, finPalActual);
-
-                    cantPalabras++;
-
-                    if (tam > mayorLongitud)
-                    {
-                        if (cantPalabrasMayores > 0)
-                            limpiarMayores(palabrasMayores);
-
-                        mayorLongitud = tam;
-                        cantPalabrasMayores = 1;
-                        pAMayores = copiarPal_MIO(palabrasMayores[0],
-                                                  inicioPal,
-                                                  tam,
-                                                  TAM_PAL_MAX);
-                    }
-                    else if (tam == mayorLongitud &&
-                             cantPalabrasMayores < CANT_PAL_MAX)
-                    {
-                        pAMayores = copiarPal_MIO(
-                                        palabrasMayores[cantPalabrasMayores],
-                                        inicioPal,
-                                        tam, TAM_PAL_MAX);
-                        cantPalabrasMayores++;
-                    }
-
-                    origenLinea = finPalActual;
-                }
-                else
-                {
-                    origenLinea = finDeLinea(linea);
-                }
+                mayorLongitud = tam;
+                cantPalabrasMayores = 1;
+                pAMayores = copiarPal_MIO(palabrasMayores[0],
+                                          inicioPal,
+                                          tam,
+                                          TAM_PAL_MAX);
             }
+            else if (tam == mayorLongitud &&
+                     cantPalabrasMayores < CANT_PAL_MAX)
+            {
+                pAMayores = copiarPal_MIO(
+                                pAMayores,
+                                inicioPal,
+                                tam, TAM_PAL_MAX);
+                cantPalabrasMayores++;
+            }
+
+            origenLinea = finPalActual;
+            inicioPal = proxPal_MIO(origenLinea);
         }
     }
 

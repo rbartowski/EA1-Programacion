@@ -13,12 +13,12 @@ int main()
     if(fpPantalla == NULL)
         fpPantalla = stdout;
 
-    //punto_1(fpPantalla);
+    punto_1(fpPantalla);
 
     punto_2(fpPantalla);
 
     fclose(fpPantalla);
-    //system("start Notepad " ARCH_PUNTO_1);
+    system("start Notepad " ARCH_PUNTO_1);
     system("start Notepad pantalla.txt");
     return 0;
 }

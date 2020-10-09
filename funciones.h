@@ -25,7 +25,7 @@ void procesarArchivo(FILE *fpEnt, FILE *fpPantalla);
 
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 /** para el PUNTO_2 **/
-#define N_FILAS         20
+#define N_FILAS         15
 #define M_COLUM         15
 
 int crearMat(int mat[][M_COLUM], int filas, int colum);
