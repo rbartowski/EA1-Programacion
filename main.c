@@ -17,14 +17,6 @@ int main()
 
     //punto_2(fpPantalla);
 
-    /*char palabras[2][TAM_PAL_MAX];
-    char word[] = "Hola";
-    char word2[] = "MundoMundoMundoMundoMundo";
-    for(int i = 0; i < 2; i++) {
-        copiarPal_MIO(palabras[i], word2, sizeof(word2), TAM_PAL_MAX);
-        printf("\n%.20s", palabras[i]);
-    }*/
-
     fclose(fpPantalla);
     system("start Notepad " ARCH_PUNTO_1);
     system("start Notepad pantalla.txt");
@@ -40,7 +32,7 @@ int main()
 void punto_1(FILE *fpPantalla)
 {
     FILE   *fpEnt;
-    int     nroLote = 10;   /// pruebe con 0/1/2/3/4/5/6/7/8/9/10 y además con
+    int     nroLote = 4;   /// pruebe con 0/1/2/3/4/5/6/7/8/9/10 y además con
                             ///     cualquier otro valor para tener distintos
                             ///     lotes de prueba
 
