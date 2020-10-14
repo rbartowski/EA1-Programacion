@@ -80,8 +80,7 @@ char * copiarPal_MIO(char * dest, const char * orig, size_t tam, int tope)
         offset = palabra - orig;
     }
 
-    // devuelve la direccion del próximo elemento de la matriz
-    return dest + (tope - offset);
+    return dest;
 }
 
 char * finDeLinea(const char * s)
@@ -93,17 +92,6 @@ char * finDeLinea(const char * s)
     return (char *)s;
 }
 
-void limpiarMayores(char m[CANT_PAL_MAX][TAM_PAL_MAX])
-{
-    for (int i = 0; i < CANT_PAL_MAX; i++)
-    {
-        for (int j = 0; j < TAM_PAL_MAX; j++)
-        {
-            m[i][j] = 0;
-        }
-    }
-}
-
 void imprimirResultados(FILE * fp,
                         const char palabras[CANT_PAL_MAX][TAM_PAL_MAX],
                         int cantLineasVacias,
@@ -112,7 +100,11 @@ void imprimirResultados(FILE * fp,
                         int cantPalabrasMayores,
                         int mayorLongitud)
 {
-    int tope = mayorLongitud > TAM_PAL_MAX ? TAM_PAL_MAX : mayorLongitud;
+    int topeRow = cantPalabrasMayores > CANT_PAL_MAX ? CANT_PAL_MAX :
+        cantPalabrasMayores;
+    char *aux = (char *)palabras[0];
+    char * fin = (char *)&palabras[topeRow - 1];
+    int i = 0;
 
     fprintf(fp, "El archivo tiene un total de %d línea(s) de texto.",
             cantLineas);
@@ -121,28 +113,14 @@ void imprimirResultados(FILE * fp,
     fprintf(fp, "\nLa palabra más larga tiene %d caracteres.", mayorLongitud);
     fprintf(fp, "\nHay %d palabra(s) con esa cantidad de caracteres",
             cantPalabrasMayores);
-
-    if (cantPalabrasMayores)
-        fprintf(fp, "\nSe muestra(n) la(s) %d palabra(s) más larga(s)",
-                cantPalabrasMayores);
-    else
-        fprintf(fp, "\nSe muestra(n) la(s) %d palabra(s) más larga(s)\n",
+    fprintf(fp, "\nSe muestra(n) la(s) %d palabra(s) más larga(s)\n",
                 cantPalabrasMayores);
 
-    for(int j = 0; j < cantPalabrasMayores; j++)
+    while(aux < fin)
     {
-        if (j < 9)
-            fprintf(fp, "\n %d - ", j + 1);
-        else
-            fprintf(fp, "\n%d - ", j + 1);
-
-        for(int k = 0; k < tope; k++)
-        {
-            if (j == cantPalabrasMayores - 1 && k == tope - 1)
-                fprintf(fp, "%c\n", palabras[j][k]);
-            else
-                fprintf(fp, "%c", palabras[j][k]);
-        }
+        fprintf(fp,"%2d - %.*s\n",i + 1, mayorLongitud, aux);
+        aux += TAM_PAL_MAX;
+        i++;
     }
 }
 
@@ -187,21 +165,17 @@ void procesarArchivo_MIO(FILE *fpEnt, FILE *fpPantalla)
 
             if (tam > mayorLongitud)
             {
-                if (cantPalabrasMayores > 0)
-                    limpiarMayores(palabrasMayores);
-
                 mayorLongitud = tam;
                 cantPalabrasMayores = 1;
-                pAMayores = copiarPal_MIO(palabrasMayores[0],
+                copiarPal_MIO(palabrasMayores[0],
                                           inicioPal,
                                           tam,
                                           TAM_PAL_MAX);
             }
-            else if (tam == mayorLongitud &&
-                     cantPalabrasMayores < CANT_PAL_MAX)
+            else if (tam == mayorLongitud)
             {
-                pAMayores = copiarPal_MIO(
-                                pAMayores,
+                if (cantPalabrasMayores < CANT_PAL_MAX)
+                    copiarPal_MIO(palabrasMayores[cantPalabrasMayores - 1],
                                 inicioPal,
                                 tam, TAM_PAL_MAX);
                 cantPalabrasMayores++;
@@ -260,24 +234,13 @@ int mostrarTriangSup_MIO(int mat[][M_COLUM], int filas, int colum,
 
     for(int i = 0; i < filas; i++)
     {
-        for (int j = 0; j < colum; j++)
+        fprintf(fpPantalla,"\n%*s",(i)*4,"");
+        for (int j = i; j < colum;j++, cantElementos++)
         {
-            if (i <= j)
-            {
-                cantElementos++;
-                if (i == j)
-                    fprintf(fpPantalla, "%*d",
-                            j * cantDigitos + cantDigitos,
-                            mat[i][j]);
-                else
-                    fprintf(fpPantalla, "%*d", cantDigitos, mat[i][j]);
-
-                if (j == colum - 1)
-                    fprintf(fpPantalla, "\n");
-            }
+            fprintf(fpPantalla,"%4d",mat[i][j]);
         }
     }
-
+    fprintf(fpPantalla,"\n");
     return cantElementos;
 }
 

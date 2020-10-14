@@ -1,25 +1,31 @@
 ********************************************
-* PUNTO-1: Probando con lote de prueba 10. *
+* PUNTO-1: Probando con lote de prueba  6. *
 ********************************************
-El archivo tiene un total de 28 línea(s) de texto.
-Hay 10 línea(s) sin palabras.
-Hay un total de 140 palabra(s).
-La palabra más larga tiene 22 caracteres.
-Hay 13 palabra(s) con esa cantidad de caracteres
-Se muestra(n) la(s) 13 palabra(s) más larga(s)
- 1 - UnexpectedEndOfRunK1
- 2 - VisualizationJustAbo
- 3 - CallToMichaelITMonto
- 4 - ultrarequetedelirant
- 5 - contrarrevolucionari
- 6 - nacionalsociodemócra
- 7 - anticonstitucionalís
- 8 - dehidroepiandrostero
- 9 - esternocleidomastoid
-10 - hipergammaglobulinem
-11 - electroencefalografí
-12 - esternocleidomastoid
-13 - otorrinolaringológic
+El archivo tiene un total de 5 línea(s) de texto.
+Hay 2 línea(s) sin palabras.
+Hay un total de 30 palabra(s).
+La palabra más larga tiene 3 caracteres.
+Hay 28 palabra(s) con esa cantidad de caracteres
+Se muestra(n) la(s) 28 palabra(s) más larga(s)
+ 1 - ser
+ 2 - tan
+ 3 - feo
+ 4 - les
+ 5 - das
+ 6 - pie
+ 7 - paz
+ 8 - pan
+ 9 - oro
+10 - luz
+11 - etc
+12 - Con
+13 - ira
+14 - ves
+15 - fea
+16 - sin
+17 - paz
+18 - mas
+19 - vas
 ********************************************
 *           Fin ejecución PUNTO-1          *
 ********************************************
@@ -66,6 +72,7 @@ Se procede a mostrarla.
 Se mostraron los 225 elementos de la matriz.
 
 Se procede a mostrar la triangular superior.
+
   78 -83 -56  76 -91  68 -50  33  72  24  85 -47  20  93  96
       53  42 -74 -20 -62 -37  55 -12  73 -84  99 -91   0  71
           29 -25  66  57  62 -10  41  98  36   1 -70  76  -1
