@@ -1,16 +1,16 @@
-/**//* 33.906.317-RODRIGUEZ,Ramiro-(06-2961) *//**/
-/**//*          AC¡ DEBE INDICAR SU N⁄MERO DE DNI, APELLIDO(S) Y          *//**/
-/**//*          NOMBRE(S) COMPLETOS Y COMISI”N TAL COMO SE INDICA         *//**/
+/**//*  *//**/
+/**//*          AC√Å DEBE INDICAR SU N√öMERO DE DNI, APELLIDO(S) Y          *//**/
+/**//*          NOMBRE(S) COMPLETOS Y COMISI√ìN TAL COMO SE INDICA         *//**/
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
-/**//**//* CUALQUIER INCLUDE DE BIBLIOTECA QUE NECESITE, H¡GALO DESDE AC¡ *//**/
+/**//**//* CUALQUIER INCLUDE DE BIBLIOTECA QUE NECESITE, H√ÅGALO DESDE AC√Å *//**/
 
 
-/**//**//* CUALQUIER INCLUDE DE BIBLIOTECA QUE NECESITE, H¡GALO HASTA AC¡ *//**/
+/**//**//* CUALQUIER INCLUDE DE BIBLIOTECA QUE NECESITE, H√ÅGALO HASTA AC√Å *//**/
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 #include "funciones.h"
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
-/**//**//* AC¡ DEBE DESARROLLAR LAS FUNCIONES Y PRIMITIVAS PEDIDAS    *//**//**/
-/**//**//* ADEM¡S DE CUALQUIER OTRA FUNCI”N QUE SE REQUIERA           *//**//**/
+/**//**//* AC√Å DEBE DESARROLLAR LAS FUNCIONES Y PRIMITIVAS PEDIDAS    *//**//**/
+/**//**//* ADEM√ÅS DE CUALQUIER OTRA FUNCI√ìN QUE SE REQUIERA           *//**//**/
 
 /******************************************
 ****************  PUNTO 1 *****************
@@ -21,8 +21,8 @@
 
 int esCaracterEspecial(char c)
 {
-    char caracteresEspeciales[] = {'·', '¡', 'È', '…', 'Ì', 'Õ', 'Û', '”', '˙',
-        '⁄', '¸', '‹', 'Ò', '—'};
+    char caracteresEspeciales[] = {'√°', '√Å', '√©', '√â', '√≠', '√ç', '√≥', '√ì', '√∫',
+        '√ö', '√º', '√ú', '√±', '√ë'};
     int esEspecial = 0;
     char * i = caracteresEspeciales;
     char * finArray = &caracteresEspeciales[sizeof(caracteresEspeciales)
@@ -106,14 +106,14 @@ void imprimirResultados(FILE * fp,
     char * fin = (char *)&palabras[topeRow - 1];
     int i = 0;
 
-    fprintf(fp, "El archivo tiene un total de %d lÌnea(s) de texto.",
+    fprintf(fp, "El archivo tiene un total de %d l√≠nea(s) de texto.",
             cantLineas);
-    fprintf(fp, "\nHay %d lÌnea(s) sin palabras.", cantLineasVacias);
+    fprintf(fp, "\nHay %d l√≠nea(s) sin palabras.", cantLineasVacias);
     fprintf(fp, "\nHay un total de %d palabra(s).", cantPalabras);
-    fprintf(fp, "\nLa palabra m·s larga tiene %d caracteres.", mayorLongitud);
+    fprintf(fp, "\nLa palabra m√°s larga tiene %d caracteres.", mayorLongitud);
     fprintf(fp, "\nHay %d palabra(s) con esa cantidad de caracteres",
             cantPalabrasMayores);
-    fprintf(fp, "\nSe muestra(n) la(s) %d palabra(s) m·s larga(s)\n",
+    fprintf(fp, "\nSe muestra(n) la(s) %d palabra(s) m√°s larga(s)\n",
                 cantPalabrasMayores);
 
     while(aux < fin)
@@ -198,7 +198,7 @@ void procesarArchivo_MIO(FILE *fpEnt, FILE *fpPantalla)
     }
     else
     {
-        fprintf(fpPantalla, "El archivo est· vacÌo\n");
+        fprintf(fpPantalla, "El archivo est√° vac√≠o\n");
     }
 
 }
